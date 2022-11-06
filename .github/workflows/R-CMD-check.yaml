@@ -42,7 +42,9 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-
+      - uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: 'mariadb-10.6'
       - name: Install database
         run: |
           sudo mysql -u root -e "
