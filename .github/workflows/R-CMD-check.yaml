@@ -10,8 +10,6 @@ name: R-CMD-check
 
 jobs:
 
-
-
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
@@ -28,7 +26,24 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - name: Runs mariadb-server:latest in host
+
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+
+
+      - name: Install system dependencies
       - uses: getong/mariadb-action@v1.1
         run: |
           mysql -u root -e "
@@ -50,24 +65,6 @@ jobs:
             dt2 TIME,
             dt3 DATETIME
             );"
-
-
-      - uses: actions/checkout@v3
-
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
-          use-public-rspm: true
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::rcmdcheck
-          needs: check
-
-
 
 
 
