@@ -38,6 +38,3 @@ tasks:
               dt3 DATETIME
               );
         "
-
-      ## Work around glitch with non-systemd systems
-      ln -s $(which true) ~/bin/timedatectl
