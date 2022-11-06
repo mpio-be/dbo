@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.vscode$
+^\.gitpod\.yml$
+^\.gitpod\.Dockerfile$

@@ -1,0 +1,24 @@
+Package: dbo
+Title: Database Tools
+Description: An interface to databases hosted on scidb.mpio.orn.mpg.de.
+Version: 2019.12
+Type: Package
+Depends:
+    R (>= 3.5.0),
+    data.table
+Imports:
+    methods,
+    utils,
+    DBI,
+    RMariaDB (>= 1.2.0),
+    stringr,
+    sf
+Suggests:
+    knitr,
+    testthat
+VignetteBuilder: knitr
+Author: Mihai Valcu
+Maintainer: Mihai Valcu <valcu@orn.mpg.de>
+License: GPL-3
+Encoding: UTF-8
+RoxygenNote: 7.2.1
