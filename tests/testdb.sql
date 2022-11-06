@@ -3,11 +3,8 @@
 CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
 GRANT ALL ON *.* TO 'testuser'@'localhost';
 FLUSH PRIVILEGES ;
-
-CREATE DATABASE IF NOT EXISTS `tests`;
-USE `tests`;
-
-
+CREATE DATABASE IF NOT EXISTS tests;
+USE tests;
 CREATE TABLE IF NOT EXISTS t1(
     id INT NOT NULL auto_increment PRIMARY KEY,
     n1  int ,
