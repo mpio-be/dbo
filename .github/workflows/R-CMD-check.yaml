@@ -45,7 +45,7 @@ jobs:
 
       - name: Install database
         run: |
-          mysql -u root -e "
+          sudo mysql -u root -e "
             CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
             GRANT ALL ON *.* TO 'testuser'@'localhost';
             FLUSH PRIVILEGES ;
