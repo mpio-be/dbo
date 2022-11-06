@@ -45,8 +45,11 @@ jobs:
       - uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: 'mariadb-10.6'
+      - name: init database
+      - run: |
+        sudo /etc/init.d/mysql start
       - name: Install database
-        run: |
+      - run: |
           sudo mysql -u root -e "
             CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
             GRANT ALL ON *.* TO 'testuser'@'localhost';
