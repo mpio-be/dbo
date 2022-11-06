@@ -3,20 +3,6 @@ image:
 tasks:
   - name: dependencies
     init: |
-      # Scriptlets, with custom Git config
-      mv ~/.gitconfig ~/.gitconfig.gitpod
-      curl -s https://raw.githubusercontent.com/krlmlr/scriptlets/master/bootstrap | sh
-      echo -e "[credential]\n\thelper = /usr/bin/gp credential-helper" >> ~/.gitconfig
-
-      # .editorconfig
-      ln -s ~/.editorconfig ..
-
-      # Set up ccache
-      ln -s /usr/lib/ccache/* ~/bin/
-
-      # Set up Makevars
-      mkdir -p ~/.R
-      echo -e "MAKEFLAGS = -j8\nCXXFLAGS = -O0 -g" > ~/.R/Makevars
 
       # Install R packages
       echo 'options(repos = "https://packagemanager.rstudio.com/all/__linux__/'$(cat /etc/lsb-release | sed  -n '/DISTRIB_CODENAME=/ {s///;p}')'/latest")' > ~/.Rprofile
@@ -33,28 +19,31 @@ tasks:
 
       ## Configure test database
       sudo mysql -e "
-      
-        CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
-        GRANT ALL ON *.* TO 'testuser'@'localhost';
+        CREATE USER IF NOT EXISTS 'testdbo'@'localhost' IDENTIFIED BY  'pwd';
+        GRANT ALL ON *.* TO 'testdbo'@'localhost';
         FLUSH PRIVILEGES ;
+        CREATE DATABASE IF NOT EXISTS tests;
+        USE tests;
+          CREATE TABLE IF NOT EXISTS t1(
+              id INT NOT NULL auto_increment PRIMARY KEY,
+              n1  int ,
+              n2  FLOAT ,
+              n3  DOUBLE ,
+              n4  BOOLEAN default 1 ,
+              n5  ENUM ('x','y','q'),
+              v1  varchar (255) ,
+              v2  char(2) ,
+              dt1 DATE,
+              dt2 TIME,
+              dt3 DATETIME
+              );
+        "
 
-        CREATE DATABASE IF NOT EXISTS `tests`;
-        USE `tests`;
 
-        CREATE TABLE IF NOT EXISTS t1(
-            id INT NOT NULL auto_increment PRIMARY KEY,
-            n1  int ,
-            n2  FLOAT ,
-            n3  DOUBLE ,
-            n4  BOOLEAN default 1 ,
-            n5  ENUM ('x','y','q'),
-            v1  varchar (255) ,
-            v2  char(2) ,
-            dt1 DATE,
-            dt2 TIME,
-            dt3 DATETIME
-            );
+        
       
+       
+ 
       "
 
       ## Work around glitch with non-systemd systems
