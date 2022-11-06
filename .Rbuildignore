@@ -3,3 +3,4 @@
 ^\.vscode$
 ^\.gitpod\.yml$
 ^\.gitpod\.Dockerfile$
+^\.github$
