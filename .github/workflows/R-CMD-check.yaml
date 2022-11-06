@@ -43,8 +43,11 @@ jobs:
           needs: check
 
 
-      - name: Install system dependencies
-      - uses: getong/mariadb-action@v1.1
+      - name: Install server
+        run: |
+          sudo apt install -y mariadb-server mariadb-client
+
+      - name: Install database
         run: |
           mysql -u root -e "
             CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
