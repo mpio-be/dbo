@@ -47,7 +47,7 @@ jobs:
           mysql-version: 'mariadb-10.6'
       - name: init database
       - run: |
-        sudo /etc/init.d/mysql start
+          sudo /etc/init.d/mysql start
       - name: Install database
       - run: |
           sudo mysql -u root -e "
