@@ -6,45 +6,26 @@
 \alias{closeCon,MariaDBConnection-method}
 \title{Connect to a database}
 \usage{
-dbcon(
-  user = Sys.info()["user"],
-  pwd = "",
-  db = NA,
-  host = "scidb.mpio.orn.mpg.de",
-  path,
-  driver = "MariaDB",
-  ...
-)
+dbcon(driver = "MariaDB", server = "scidb", db, config.file, ...)
 
 closeCon(con)
 
 \S4method{closeCon}{MariaDBConnection}(con)
 }
 \arguments{
-\item{user}{username}
-
-\item{pwd}{password ("" or NA means no password e.g. for localhost)}
-
-\item{db}{database to connect to}
-
-\item{host}{default to "scidb.mpio.orn.mpg.de"}
-
-\item{path}{to credentials file (if different from the default)}
-
 \item{driver}{MariaDB or mysql_gdal, ... Defaults to MariaDB}
 
-\item{...}{pass to dbConnect}
+\item{db}{active database name}
 
-\item{con}{a connection made with dbcon or \code{\link{dbConnect} }}
+\item{...}{pass to dbConnect}
 }
 \value{
 a connection object
 }
 \description{
 \code{dbcon} returns a database connection.
-                  If user and password are not given dbq looks for previously saved credentials
-                  see(  \code{\link{saveCredentials}} ). \code{\link{closeCon}} closes the connection.
+                  If user and password are not given dbq looks for TODO
 }
 \seealso{
-\code{\link{saveCredentials}}, \code{\link{dbq} }
+\code{\link{xxxxxxx}}
 }

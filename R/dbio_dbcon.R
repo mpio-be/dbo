@@ -3,45 +3,42 @@
 #' Connect to a database
 #'
 #' @description     \code{dbcon} returns a database connection.
-#'                   If user and password are not given dbq looks for previously saved credentials
-#'                   see(  \code{\link{saveCredentials}} ). \code{\link{closeCon}} closes the connection.
+#'                   If user and password are not given dbq looks for TODO
 #' 
-#' @param user      username
-#' @param pwd       password ("" or NA means no password e.g. for localhost)
-#' @param db        database to connect to
-#' @param host      default to "scidb.mpio.orn.mpg.de"
-#' @param path      to credentials file (if different from the default)
 #' @param driver    MariaDB or mysql_gdal, ... Defaults to MariaDB
+#' @param db        active database name
 #' @param ...       pass to dbConnect
-#' @param con       a connection made with dbcon or \code{\link{dbConnect} }
 #' 
 #' @export
 #' @return          a connection object
-#' @seealso         \code{\link{saveCredentials}}, \code{\link{dbq} }
+#' @seealso         \code{\link{xxxxxxx}}
 
-dbcon <- function(user = Sys.info()['user'], pwd = "", db = NA, host = "scidb.mpio.orn.mpg.de", path, driver = "MariaDB" , ...) {
-
-  if(!missing(user) & !missing(pwd) )
-  X = data.frame(user, pwd, db, host, stringsAsFactors = FALSE) else
-  X = getCredentials(user = user, host = host, path = path)
-  if( nrow(X) == 0 || is.na(X$user) ) stop( "Credentials for user ", dQuote(user), " are not saved!")
+dbcon <- function(driver = "MariaDB", server = "scidb", db , config.file, ...) {
 
 
   if( driver ==  "MariaDB" ) {
-    if(is.na(X$pwd) | X$pwd == "")
-         con = dbConnect( RMariaDB::MariaDB() , user = X$user,                   host = X$host, ...) else
-         con = dbConnect( RMariaDB::MariaDB() , user = X$user, password = X$pwd, host = X$host, ...)
+    con = dbConnect(
+      dr             = RMariaDB::MariaDB(),
+      # timezone     = "Europe/Berlin", TODO
+      default.file = config.file, 
+      group        = server,
+      timeout      = 3600,
+      ...
+    )
 
-    if(!is.na(db)) dbExecute(con, paste('USE', db))
+    if (!missing(db)) {
+      dbExecute(con, glue("USE {db}"))
+    }
+
     }
 
 
 
 
-
   if(driver == 'mysql_gdal') {
-    if(missing(db)) stop ('database name is required for mysql_gdal')
-    con = paste0('MYSQL:', db ,',user=', X$user, ',host=', X$host, ',password=', X$pwd)
+    if (missing(db)) stop("database name is required for mysql_gdal")
+    # TODO parse .my.cnf?
+    con = paste0("MYSQL:", db, ",user=", user, ",host=", host, ",password=", pwd)
   }
 
 

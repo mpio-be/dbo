@@ -5,13 +5,15 @@ Version: 2019.12
 Type: Package
 Depends:
     R (>= 3.5.0),
-    data.table
 Imports:
     methods,
     utils,
+    stringr,
+    glue,
+    rappdirs,
+    data.table,
     DBI,
     RMariaDB (>= 1.2.0),
-    stringr,
     sf
 Suggests:
     knitr,

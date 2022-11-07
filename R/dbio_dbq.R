@@ -44,7 +44,7 @@ setMethod("dbq",signature  = c(con = "MariaDBConnection", q = "character"),
 		
 
 		if( isNotSelect(q) )
-			warning('Use dbExecute() queries returning no data.')
+			warning('For queries returning no data use dbExecute().')
 
 	
 		o =  dbGetQuery(con, q, ...) 
@@ -61,7 +61,7 @@ setMethod("dbq",signature  = c(con = "missing", q = "character"),
 		definition = function(q, ...) {
 		
 		if( isNotSelect(q) )
-			warning('Use dbExecute() queries returning no data.')
+   warning("UFor queries returning no data use dbExecute().")
 
 		con = dbcon(...); on.exit(closeCon(con))
 		o = dbGetQuery(con, q) 

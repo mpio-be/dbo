@@ -1,11 +1,11 @@
 utils::globalVariables(
   c(
-    "db",
     ".pk",
+    ".duplicates",
     "scinam_tdata",
     "scinam_ttax",
+    "db",
     "N",
-    ".duplicates",
     "geometry"
   )
 )
@@ -27,19 +27,27 @@ NULL
 #'
 #' @import     methods utils data.table
 #' @import     RMariaDB DBI
-#' @importFrom stringr str_trim
+#' @importFrom stringr str_trim str_detect str_glue str_split regex
+#' @importFrom glue glue
+#' @importFrom rappdirs user_config_dir
 #' @importFrom stats rnorm rpois runif
-#' @importFrom stringr str_detect str_glue str_split regex
 #' @importFrom sf st_as_sfc st_sf st_set_crs
 #' 
 NULL
 
 
 .onAttach <- function(libname, pkgname) {
-	dcf <- read.dcf(file=system.file("DESCRIPTION", package=pkgname) )
-  msg = paste(pkgname, dcf[, "Version"])
-	packageStartupMessage()
+   packageStartupMessage(
+     glue::glue(
+       "dbo v. { read.dcf(file=system.file('DESCRIPTION', package=pkgname) )[, 'Version']}"
+     )
+   )
 	
+  my.cnf = glue::glue("{rappdirs::user_config_dir('dbo')}/.my.cnf")
+
+  if (!file.exists(my.cnf)) {
+    packageStartupMessage("Settings file does not exist. ")
+  }
 
 
   }
