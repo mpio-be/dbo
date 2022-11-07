@@ -25,10 +25,10 @@ jobs:
 
 
     steps:
-      - uses: shogo82148/actions-setup-mysql@v1
 
-      - name: start db 
+      - name: start & install db 
         run: |
+          sudo -y apt install  mariadb-server
           sudo systemctl enable mysql.service
           sudo systemctl start mysql.service
           sudo systemctl status mysql.service
