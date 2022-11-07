@@ -14,11 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: shogo82148/actions-setup-mysql@v1
-
       - name: start mysql
         - run: |
           sudo systemctl start mysql
-
       - name: Install database
         - run: |
           sudo mysql -u root -e "
