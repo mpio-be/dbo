@@ -45,9 +45,13 @@ jobs:
       - uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: 'mariadb-10.6'
-      - run: |
-          sudo /etc/init.d/mysql start
-          
+
+
+      - name: start mysql
+        run: |
+          sudo systemctl start mysql
+
+
       - name: Install database
       - run: |
           sudo mysql -u root -e "
