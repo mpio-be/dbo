@@ -48,12 +48,12 @@ jobs:
 
 
       - name: start mysql
-          run: |
+          - run: |
             sudo systemctl start mysql
 
 
       - name: Install database
-          run: |
+          - run: |
             sudo mysql -u root -e "
               CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
               GRANT ALL ON *.* TO 'testuser'@'localhost';
