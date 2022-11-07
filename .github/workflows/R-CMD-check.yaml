@@ -11,12 +11,8 @@ name: R-CMD-check
 jobs:
 
   DB support:
-    runs-on: ${{ matrix.config.os }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
+    runs-on: ubuntu-latest
     steps:
-
       - uses: shogo82148/actions-setup-mysql@v1
 
       - name: start mysql
@@ -44,16 +40,8 @@ jobs:
             dt2 TIME,
             dt3 DATETIME
             );"
-
-
-
-
-
   R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
