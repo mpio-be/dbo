@@ -18,8 +18,6 @@ jobs:
     steps:
 
       - uses: shogo82148/actions-setup-mysql@v1
-        with:
-          mysql-version: 'mariadb-10.6'
 
       - name: start mysql
         - run: |
