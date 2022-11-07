@@ -28,7 +28,7 @@ jobs:
       - uses: shogo82148/actions-setup-mysql@v1
 
       - name: start db 
-      - run: sudo systemctl start mysql
+        run: sudo systemctl start mysql
       
 
 
