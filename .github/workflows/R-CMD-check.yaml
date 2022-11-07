@@ -27,7 +27,10 @@ jobs:
     steps:
       - uses: shogo82148/actions-setup-mysql@v1
 
-      -name: start db and make test db
+      -name: start db 
+      - run: sudo systemctl start mysql
+      
+      -name: make test db 
       - run: |
         sudo systemctl start mysql
         sudo mysql -u root -e "
