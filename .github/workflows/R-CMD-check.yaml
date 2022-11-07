@@ -31,7 +31,7 @@ jobs:
 
       - name: start db 
         run: |
-          sudo systemctl start mysql.service
+          mysql -uroot -h127.0.0.1 -e 'SELECT version()'
       
       - name: make test db 
         run: |
