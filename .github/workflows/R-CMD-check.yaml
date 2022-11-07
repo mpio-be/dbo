@@ -30,7 +30,7 @@ jobs:
       - name: start db 
         run: sudo systemctl start mysql
       
-      -name: make test db 
+      - name: make test db 
         run: |
           sudo systemctl start mysql
           sudo mysql -u root -e "
