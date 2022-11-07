@@ -35,7 +35,7 @@ jobs:
       
       - name: make test db 
         run: |
-          sudo -uroot -h127.0.0.1 -e "
+          sudo mysql -uroot -h127.0.0.1 -e "
             CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
             GRANT ALL ON *.* TO 'testuser'@'localhost';
             FLUSH PRIVILEGES ;
