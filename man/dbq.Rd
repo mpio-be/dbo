@@ -54,5 +54,5 @@ s = dbq(con, q = 'select * from tests.t2', geom = 'SHAPE')
 }
 }
 \seealso{
-\code{\link{saveCredentials}},\code{\link{dbcon}}
+\code{\link[=my.cnf]{my.cnf()}}, \code{\link[=dbcon]{dbcon()}}
 }

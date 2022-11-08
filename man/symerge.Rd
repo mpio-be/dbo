@@ -19,6 +19,7 @@ symerge(ttax, tdata, sy, clean = TRUE)
 Synonyms merge
 }
 \examples{
+require(data.table)
 ttax  = data.table(scinam = c('a', 'b', 'c', 'd', 'm', 'n'), V1 = rnorm(6))
 tdata  = data.table(scinam = c('a', 'b', 'j', 'k', 'n', 'm'), V2 = rnorm(6))
 sy = data.table(scinam = c('a', 'b', 'c', 'j', 'd', 'k', 'm', 'n'), syid = c(1,2,3,3,4,4,5,5))

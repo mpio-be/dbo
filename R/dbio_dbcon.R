@@ -5,25 +5,27 @@
 #' @description     \code{dbcon} returns a database connection.
 #'                   If user and password are not given dbq looks for TODO
 #' 
-#' @param driver    MariaDB or mysql_gdal, ... Defaults to MariaDB
-#' @param db        active database name
-#' @param ...       pass to dbConnect
+#' @param driver       MariaDB, defaults to MariaDB
+#' @param server       server name. 
+#' @param db           active database name
+#' @param config.file  path to a config file. See [dbo::my.cnf()]
+#' @param ...          further arguments passed to [DBI::dbConnect()]
 #' 
 #' @export
 #' @return          a connection object
-#' @seealso         \code{\link{xxxxxxx}}
+#' @seealso         [DBI::dbConnect()]
+#' @md
 
 dbcon <- function(driver = "MariaDB", server = "scidb", db , config.file, ...) {
 
 
   if( driver ==  "MariaDB" ) {
     con = dbConnect(
-      dr             = RMariaDB::MariaDB(),
+      drv          = RMariaDB::MariaDB(),
       # timezone     = "Europe/Berlin", TODO
       default.file = config.file, 
       group        = server,
-      timeout      = 3600,
-      ...
+      timeout      = 3600
     )
 
     if (!missing(db)) {
@@ -32,21 +34,12 @@ dbcon <- function(driver = "MariaDB", server = "scidb", db , config.file, ...) {
 
     }
 
-
-
-
-  if(driver == 'mysql_gdal') {
-    if (missing(db)) stop("database name is required for mysql_gdal")
-    # TODO parse .my.cnf?
-    con = paste0("MYSQL:", db, ",user=", user, ",host=", host, ",password=", pwd)
-  }
-
-
-  return(con)
+    con
 
   }
 
 #' @rdname dbcon
+#' @param con    The connection object.
 #' @export
 setGeneric("closeCon", function(con)   standardGeneric("closeCon") )
 

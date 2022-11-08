@@ -27,7 +27,7 @@ NULL
 #'
 #' @import     methods utils data.table
 #' @import     RMariaDB DBI
-#' @importFrom stringr str_trim str_detect str_glue str_split regex
+#' @importFrom stringr str_trim str_detect str_replace str_glue str_split regex
 #' @importFrom glue glue
 #' @importFrom rappdirs user_config_dir
 #' @importFrom stats rnorm rpois runif
@@ -44,9 +44,12 @@ NULL
    )
 	
   my.cnf = glue::glue("{rappdirs::user_config_dir('dbo')}/.my.cnf")
+  options(dbo.my.cnf = my.cnf)
 
   if (!file.exists(my.cnf)) {
-    packageStartupMessage("Settings file does not exist. ")
+    packageStartupMessage(
+      "There is no configuration file. Run my.cnf() first."
+    )
   }
 
 

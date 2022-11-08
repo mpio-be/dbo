@@ -10,9 +10,10 @@
 #' @param ...        passed to dbcon
 #'
 #' 
-#' @seealso \code{\link{saveCredentials}},\code{\link{dbcon}}
+#' @seealso [dbo::my.cnf()], [dbo::dbcon()]
 #' 
 #' @export
+#' @md
 #' @return a data.frame or a  Spatial*DataFrame (spatial_MySQL) for a SELECT query, or NULL for non-SELECT queries.
 #' @examples
 #' \dontrun{
@@ -61,7 +62,7 @@ setMethod("dbq",signature  = c(con = "missing", q = "character"),
 		definition = function(q, ...) {
 		
 		if( isNotSelect(q) )
-   warning("UFor queries returning no data use dbExecute().")
+   warning("For queries returning no data use dbExecute().")
 
 		con = dbcon(...); on.exit(closeCon(con))
 		o = dbGetQuery(con, q) 

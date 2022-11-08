@@ -13,19 +13,28 @@ closeCon(con)
 \S4method{closeCon}{MariaDBConnection}(con)
 }
 \arguments{
-\item{driver}{MariaDB or mysql_gdal, ... Defaults to MariaDB}
+\item{driver}{MariaDB, defaults to MariaDB}
+
+\item{server}{server name.}
 
 \item{db}{active database name}
 
-\item{...}{pass to dbConnect}
+\item{config.file}{path to a config file. See \code{\link[=my.cnf]{my.cnf()}}}
+
+\item{...}{further arguments passed to \code{\link[DBI:dbConnect]{DBI::dbConnect()}}}
+
+\item{con}{The connection object.}
 }
 \value{
-a connection object
+\if{html}{\out{<div class="sourceCode">}}\preformatted{     a connection object
+}\if{html}{\out{</div>}}
 }
 \description{
-\code{dbcon} returns a database connection.
-                  If user and password are not given dbq looks for TODO
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\code{dbcon} returns a database connection.
+              If user and password are not given dbq looks for TODO
+}\if{html}{\out{</div>}}
 }
 \seealso{
-\code{\link{xxxxxxx}}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{    [DBI::dbConnect()]
+}\if{html}{\out{</div>}}
 }
