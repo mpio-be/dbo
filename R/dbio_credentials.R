@@ -2,7 +2,8 @@
 #' manage database credentials
 #' manage database credentials for for different hosts .
 #' @param delete   removes the config file (default to FALSE).
-
+#' @export 
+#' 
 my.cnf <- function(delete = FALSE) {
 
   path = getOption("dbo.my.cnf")

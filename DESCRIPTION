@@ -1,7 +1,7 @@
 Package: dbo
 Title: Database Tools
 Description: An interface to databases hosted on scidb.mpio.orn.mpg.de.
-Version: 2019.12
+Version: 2022.01
 Type: Package
 Depends:
     R (>= 3.5.0),
