@@ -5,10 +5,10 @@
 #' @description     \code{dbcon} returns a database connection.
 #'                   If user and password are not given dbq looks for TODO
 #' 
-#' @param driver       MariaDB, defaults to MariaDB
 #' @param server       server name. 
 #' @param db           active database name
 #' @param config.file  path to a config file. See [dbo::my.cnf()]
+#' @param driver       MariaDB, defaults to MariaDB
 #' @param ...          further arguments passed to [DBI::dbConnect()]
 #' 
 #' @export
@@ -16,7 +16,7 @@
 #' @seealso         [DBI::dbConnect()]
 #' @md
 
-dbcon <- function(driver = "MariaDB", server = "scidb", db , config.file, ...) {
+dbcon <- function(server = "scidb", db , config.file = getOption('dbo.my.cnf'), driver = "MariaDB", ...) {
 
 
   if( driver ==  "MariaDB" ) {

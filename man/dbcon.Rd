@@ -6,20 +6,26 @@
 \alias{closeCon,MariaDBConnection-method}
 \title{Connect to a database}
 \usage{
-dbcon(driver = "MariaDB", server = "scidb", db, config.file, ...)
+dbcon(
+  server = "scidb",
+  db,
+  config.file = getOption("dbo.my.cnf"),
+  driver = "MariaDB",
+  ...
+)
 
 closeCon(con)
 
 \S4method{closeCon}{MariaDBConnection}(con)
 }
 \arguments{
-\item{driver}{MariaDB, defaults to MariaDB}
-
 \item{server}{server name.}
 
 \item{db}{active database name}
 
 \item{config.file}{path to a config file. See \code{\link[=my.cnf]{my.cnf()}}}
+
+\item{driver}{MariaDB, defaults to MariaDB}
 
 \item{...}{further arguments passed to \code{\link[DBI:dbConnect]{DBI::dbConnect()}}}
 
