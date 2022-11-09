@@ -39,7 +39,7 @@ jobs:
             CREATE USER 'testuser'@'localhost' IDENTIFIED BY  'pwd';
             GRANT ALL ON *.* TO 'testuser'@'localhost';
             FLUSH PRIVILEGES ;
-            );"
+            "
 
       - uses: actions/checkout@v3
 
