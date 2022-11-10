@@ -47,7 +47,7 @@ test_db <- function(user = 'testuser', host =  '127.0.0.1', db = 'tests', pwd, d
           dt2 TIME,
           dt3 DATETIME
 
-        ); ")
+        ) COMMENT 'this is table 1'; ")
 
       T1 = data.frame(n1 = rpois(100, 2), n2 = rnorm(100), n3 = rnorm(100, 200), n4 = runif(100, 0, 1),
               n5 = sample(c('x','y','q'), 100, replace = TRUE),
