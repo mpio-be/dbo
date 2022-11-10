@@ -7,24 +7,24 @@
 #   FLUSH PRIVILEGES ;
 # ====================================================================================
 
-host <- "127.0.0.1"
-user <- 
-pwd <- "pwd"
-db <- "tests"
+HOST <- "127.0.0.1"
+USER <- "testuser"
+PWD  <- "pwd"
+DB   <- "tests"
 
 context("test db")
 
 
  test_that("test db is created in good order.", {
   
-  dbo::test_db(user = "testuser", host = "127.0.0.1", db = "tests", pwd = "pwd")
+  dbo::test_db(user = USER, host = HOST, db = DB, pwd = PWD)
 
     expect_true(
       dbCanConnect(RMariaDB::MariaDB(),
-        user = user, 
-        host = host, 
-        password = pwd, 
-        dbname = db
+        user = USER, 
+        host = HOST, 
+        password = PWD, 
+        dbname = DB
       )
     )
 

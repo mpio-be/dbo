@@ -1,6 +1,7 @@
 
-dbo::test_db(user = "testuser", host = "127.0.0.1", db = "tests", pwd = "pwd")
+
 my.cnf = system.file("my.cnf", package = "dbo")
+print(my.cnf)
 
 context("Connections")
 
