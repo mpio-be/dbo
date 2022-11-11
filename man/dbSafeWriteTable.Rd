@@ -15,7 +15,7 @@ dbSafeWriteTable(
 )
 }
 \arguments{
-\item{con}{a *Connection object}
+\item{con}{a Connection object}
 
 \item{name}{table name}
 
