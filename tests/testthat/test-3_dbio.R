@@ -1,6 +1,5 @@
 
-my.cnf <- system.file("my.cnf", package = "dbo")
-con = dbcon(server = "localhost", config.file = my.cnf, db = "tests")
+con = dbcon(server = "localhost",db = "tests")
 
 
 context("dbSafeWriteTable")

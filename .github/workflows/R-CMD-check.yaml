@@ -29,6 +29,16 @@ jobs:
       - uses: shogo82148/actions-setup-mysql@v1.14.0
         with:
           mysql-version: 'mariadb-10.9'
+          my-cnf: |
+            [localhost]
+            host=localhost
+            user=testuser
+            password=pwd
+
+            [localhost2]
+            host=127.0.0.1
+            user=testuser
+            password=wrongpwd
 
       - name: start db 
         run: |
