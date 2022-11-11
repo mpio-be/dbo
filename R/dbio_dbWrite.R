@@ -1,10 +1,39 @@
 
-#' Update  on small chunks
+#' Update table
 #'
-#' @description    calls dbWriteTable() on small chunks
+#' @description   Update database table using a data.frame. Only one column can be updated. 
+#' @param     con       a connection object
+#' @param     dbtable   dbtable name
+#' @param     dat       a data.frame
+#' @param     by        by which colum to update
+#' @param     which     which colum to update
+#' @examples
+#' \dontrun{
+#' 
+#' x = data.table(y = letters[1:5], pk = 1:5)
+#' con = dbcon(db = 'tests')
+#' dbWriteTable(con, "X", x, row.names = FALSE, overwrite =TRUE)
+#' x1 = x[1:2][,y := c("Z", "W")]
+#' o = dbUpdate(con, "X", x1, by = "pk", which = "y")
+#' dbq(con, "SELECT * FROM X")
+#' dbExecute(con, "DROP table X")
+#' closeCon(con)
+#' 
+#' }
+#' 
+dbUpdate <- function(con, dbtable, dat, by, which) {
 
+  dbWriteTable(con, "tempbydbopackage", dat, row.names = FALSE, overwrite = TRUE, temporary = TRUE)
 
-dbUpdate
+  sql = glue("UPDATE {dbtable} t1
+                INNER JOIN tempbydbopackage t2
+                    ON t1.{by} = t2.{by}
+                      SET t1.{which} = t2.{which}")
+  dbBegin(con)
+  dbExecute(con, sql)
+  dbCommit(con)
+
+}
 
 
 
@@ -12,7 +41,7 @@ dbUpdate
 #'
 #' @description    calls dbWriteTable() on small chunks
 #'                
-#' @param     con       a *Connection object
+#' @param     con       a Connection object
 #' @param     name       table name
 #' @param     x          data.table
 #' @param     append     default to TRUE

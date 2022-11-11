@@ -2,7 +2,29 @@
 con = dbcon(server = "localhost",db = "tests")
 
 
-context("dbSafeWriteTable")
+context("DB I/O")
+
+ test_that("dbUpdate  works", {
+
+
+    x = data.table(y = letters[1:5], pk = 1:5)
+    con = dbcon(db = 'tests')
+    dbWriteTable(con, "X", x, row.names = FALSE, overwrite =TRUE)
+    x1 = x[1:2][,y := c("Z", "W")]
+   
+    expect_true(dbUpdate(con, "X", x1, by = "pk", which = "y"))
+
+    expect_equal(
+        dbq(con, "SELECT y FROM X limit 1")$y, 
+        "Z"
+    )
+
+
+    dbExecute(con, "DROP table X")
+
+
+
+    })
 
  test_that("dbSafeWriteTable works as expected", {
 
@@ -22,7 +44,7 @@ context("dbSafeWriteTable")
     })
 
 
-context("dbInsertInto")
+
 
  test_that("dbInsertInto works as expected", {
 
