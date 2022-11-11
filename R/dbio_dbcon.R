@@ -5,25 +5,25 @@
 #' @description     \code{dbcon} returns a database connection.
 #'                   If user and password are not given dbq looks for TODO
 #' 
-#' @param server       server name. IF more server names are given they will be try out in the given order.
+#' @param server       server name. If more server names are given they will be try out in the given order.
 #' @param db           active database name
-#' @param config.file  path to a config file. See [dbo::my.cnf()]
-#' @param driver       MariaDB, defaults to MariaDB
+#' @param driver       MariaDB
 #' @param ...          further arguments passed to [DBI::dbConnect()]
 #' 
 #' @export
 #' @return          a connection object
 #' @seealso         [DBI::dbConnect()]
+#' @note           [DBI::dbConnect()] timezone and default.file (.my.cnf) are set throug options() at startup. 
 #' @md
 
-dbcon <- function(server = c("scidb","scidb_replica"), db , config.file = getOption('dbo.my.cnf'), driver = "MariaDB", ...) {
+dbcon <- function(server = c("scidb","scidb_replica"), db , driver = "MariaDB", ...) {
 
 
   if( driver ==  "MariaDB" ) {
     con = dbConnect(
       drv          = RMariaDB::MariaDB(),
-      timezone     = "Europe/Berlin"  , 
-      default.file = config.file, 
+      timezone     = getOption("dbo.tz")  , 
+      default.file = getOption('dbo.my.cnf'), 
       group        = server[1],
       timeout      = 3600
     ) |> try(silent = TRUE)
@@ -33,7 +33,8 @@ dbcon <- function(server = c("scidb","scidb_replica"), db , config.file = getOpt
 
     con <- dbConnect(
       drv          = RMariaDB::MariaDB(),
-      default.file = config.file,
+      timezone     = getOption("dbo.tz"),
+      default.file = getOption('dbo.my.cnf'),
       group        = server[2],
       timeout      = 3600
     )

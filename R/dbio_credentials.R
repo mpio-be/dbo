@@ -10,7 +10,7 @@ my.cnf <- function(delete = FALSE) {
 
   if(!delete) {
     if(!file.exists(path)){
-      dir.create(dirname(path), recursive = TRUE)
+      dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
 
       file.copy(system.file("my.cnf", package = "dbo"), path)
 

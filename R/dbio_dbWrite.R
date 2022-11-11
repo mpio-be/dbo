@@ -7,6 +7,7 @@
 #' @param     dat       a data.frame
 #' @param     by        by which colum to update
 #' @param     which     which colum to update
+#' @export
 #' @examples
 #' \dontrun{
 #' 

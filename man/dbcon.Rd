@@ -6,26 +6,18 @@
 \alias{closeCon,MariaDBConnection-method}
 \title{Connect to a database}
 \usage{
-dbcon(
-  server = c("scidb", "scidb_replica"),
-  db,
-  config.file = getOption("dbo.my.cnf"),
-  driver = "MariaDB",
-  ...
-)
+dbcon(server = c("scidb", "scidb_replica"), db, driver = "MariaDB", ...)
 
 closeCon(con)
 
 \S4method{closeCon}{MariaDBConnection}(con)
 }
 \arguments{
-\item{server}{server name. IF more server names are given they will be try out in the given order.}
+\item{server}{server name. If more server names are given they will be try out in the given order.}
 
 \item{db}{active database name}
 
-\item{config.file}{path to a config file. See \code{\link[=my.cnf]{my.cnf()}}}
-
-\item{driver}{MariaDB, defaults to MariaDB}
+\item{driver}{MariaDB}
 
 \item{...}{further arguments passed to \code{\link[DBI:dbConnect]{DBI::dbConnect()}}}
 
@@ -38,6 +30,10 @@ closeCon(con)
 \description{
 \if{html}{\out{<div class="sourceCode">}}\preformatted{\code{dbcon} returns a database connection.
               If user and password are not given dbq looks for TODO
+}\if{html}{\out{</div>}}
+}
+\note{
+\if{html}{\out{<div class="sourceCode">}}\preformatted{      [DBI::dbConnect()] timezone and default.file (.my.cnf) are set throug options() at startup. 
 }\if{html}{\out{</div>}}
 }
 \seealso{

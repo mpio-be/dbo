@@ -3,6 +3,7 @@
 export(closeCon)
 export(dbInsertInto)
 export(dbSafeWriteTable)
+export(dbUpdate)
 export(dbcon)
 export(dbq)
 export(my.cnf)

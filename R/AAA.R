@@ -52,5 +52,8 @@ NULL
     )
   }
 
+  options(dbo.tz = "Europe/Berlin")
+  packageStartupMessage("Server time set to Europe/Berlin.")
+
 
   }

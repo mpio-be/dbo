@@ -4,13 +4,7 @@
 \alias{test_db}
 \title{Test database}
 \usage{
-test_db(
-  user = "testuser",
-  host = "127.0.0.1",
-  db = "tests",
-  pwd,
-  destroy = FALSE
-)
+test_db(user = "testuser", host = "127.0.0.1", db = "tests", pwd)
 }
 \arguments{
 \item{user}{default to 'testuser'}
@@ -20,11 +14,9 @@ test_db(
 \item{db}{default to 'tests'}
 
 \item{pwd}{pwd}
-
-\item{destroy}{default to FALSE}
 }
 \description{
-Installs or destroys a mariadb test database
+Installs a mariadb test database with spatial support.
 }
 \note{
 test_db() works independently on other functions in dbo
