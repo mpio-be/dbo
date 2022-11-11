@@ -16,7 +16,7 @@
 #' @seealso         [DBI::dbConnect()]
 #' @md
 
-dbcon <- function(server = "scidb", db , config.file = getOption('dbo.my.cnf'), driver = "MariaDB", ...) {
+dbcon <- function(server = c("scidb","scidb_replica"), db , config.file = getOption('dbo.my.cnf'), driver = "MariaDB", ...) {
 
 
   if( driver ==  "MariaDB" ) {

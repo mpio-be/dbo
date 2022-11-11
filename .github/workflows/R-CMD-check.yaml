@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: shogo82148/actions-setup-mysql@v1
         with:
-          mysql-version: 'mariadb-10.10.1'
+          mysql-version: 'mariadb-10.9'
 
       - name: start db 
         run: |
