@@ -21,6 +21,23 @@ context("Connections")
   closeCon(con)
   })
 
+
+ test_that("a second host is used when the first server is not available", {
+  
+  expect_warning({
+    con = dbcon(server = c("localhost2", "localhost"))
+  })
+  
+  closeCon(con)
+
+  })
+
+
+
+
+
+
+
 context("dbq")
 
  test_that("dbq works through an internal connection", {

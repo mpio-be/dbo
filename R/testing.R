@@ -2,33 +2,25 @@
 
 
 #' @title Test database
-#' @description Installs or destroys a mariadb test database
+#' @description Installs a mariadb test database with spatial support. 
 #' 
 #' @param  user        default to 'testuser'
 #' @param  host        default to '127.0.0.1'
 #' @param  db          default to 'tests'
 #' @param  pwd         pwd
-#' @param  destroy     default to FALSE
 #' 
 #' @export
 #' @note
 #' test_db() works independently on other functions in dbo
 #'
 
-test_db <- function(user = 'testuser', host =  '127.0.0.1', db = 'tests', pwd, destroy = FALSE) {
+test_db <- function(user = 'testuser', host =  '127.0.0.1', db = 'tests', pwd) {
 
   DSN = paste0('MySQL:',db ,',user=', user, ',host=', host, ',password=', pwd)
-
-  # pwd = readLines('~/.my.cnf')[grep('password', readLines('~/.my.cnf'))]
-  # pwd = str_extract(pwd, '[^=]*$') |> str_trim() |> str_replace_all("'", "") |> str_replace_all('"', "")
 
   con = dbConnect(RMariaDB::MariaDB(), user = user, host = host, password = pwd)
   on.exit(dbDisconnect(con))
 
-  if(destroy)
-  dbExecute(con, paste('DROP DATABASE IF EXISTS', db))
-
-  dbExecute(con, paste('CREATE DATABASE IF NOT EXISTS', db))
   dbExecute(con, paste('USE', db))
 
   #T1 [ a table with major types]

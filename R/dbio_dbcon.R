@@ -22,7 +22,7 @@ dbcon <- function(server = c("scidb","scidb_replica"), db , config.file = getOpt
   if( driver ==  "MariaDB" ) {
     con = dbConnect(
       drv          = RMariaDB::MariaDB(),
-      # timezone     = "Europe/Berlin", TODO
+      timezone     = "Europe/Berlin"  , 
       default.file = config.file, 
       group        = server[1],
       timeout      = 3600

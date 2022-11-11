@@ -1,13 +1,8 @@
 
-if (Sys.getenv("GITHUB_ACTIONS") == "true") {
+HOST <- "127.0.0.1"
+USER <- "testuser"
+PWD <- "pwd"
+DB <- "tests"
 
-# see https://github.com/marketplace/actions/actions-setup-mysql
 
-file.copy(system.file("my.cnf", package = "dbo"), "~/.my.cnf")
-
-print("++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print(getwd())
-
-options(dbo.my.cnf = "~/.my.cnf")
-
-}
+dbo::test_db(user = USER, host = HOST, db = DB, pwd = PWD)

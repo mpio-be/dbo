@@ -12,3 +12,15 @@ test_that("tableComments gets table comments in a DT", {
 
 
 })
+
+
+test_that("datetime is returned correctly", {
+
+  x = data.frame(dt = Sys.time())
+  dbWriteTable(con, "temp", x, temporary = TRUE, row.names = FALSE, overwrite = TRUE)
+  o = dbReadTable(con, "temp")
+
+  expect_equal(as.double(x), as.double(o))
+
+
+})
