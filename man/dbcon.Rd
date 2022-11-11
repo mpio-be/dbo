@@ -7,7 +7,7 @@
 \title{Connect to a database}
 \usage{
 dbcon(
-  server = "scidb",
+  server = c("scidb", "scidb_replica"),
   db,
   config.file = getOption("dbo.my.cnf"),
   driver = "MariaDB",
@@ -19,7 +19,7 @@ closeCon(con)
 \S4method{closeCon}{MariaDBConnection}(con)
 }
 \arguments{
-\item{server}{server name.}
+\item{server}{server name. IF more server names are given they will be try out in the given order.}
 
 \item{db}{active database name}
 
