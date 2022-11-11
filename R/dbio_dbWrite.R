@@ -1,3 +1,13 @@
+
+#' Update  on small chunks
+#'
+#' @description    calls dbWriteTable() on small chunks
+
+
+dbUpdate
+
+
+
 #' dbWriteTable() on small chunks
 #'
 #' @description    calls dbWriteTable() on small chunks
