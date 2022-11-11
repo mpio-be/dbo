@@ -1,6 +1,5 @@
 
 #' Update table
-#'
 #' @description   Update database table using a data.frame. Only one column can be updated. 
 #' @param     con       a connection object
 #' @param     dbtable   dbtable name
