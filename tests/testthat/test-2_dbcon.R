@@ -31,7 +31,7 @@ context("dbq")
       config.file = my.cnf,
       server = "localhost",
       db = "tests",
-      q = "select * from t1 limit 1"
+      q = "select * from T1 limit 1"
       )
    expect_is(o, "data.table")
    })

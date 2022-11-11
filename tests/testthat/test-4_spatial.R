@@ -21,8 +21,8 @@ test_that("spatial dbq should fail for select * FROM queries", {
 test_that("spatial dbq plays with JOINS", {
 
   expect_warning(
-    dbq(con, q = "SELECT t3.OGR_FID, t3.SHAPE, t1.n2 FROM
-              t3 JOIN t1 ON t3.OGR_FID = t1.n1
+    dbq(con, q = "SELECT t3.OGR_FID, t3.SHAPE, T1.n2 FROM
+              t3 JOIN T1 ON t3.OGR_FID = T1.n1
                 WHERE n1 < 4", geom = "SHAPE")
     )
 
