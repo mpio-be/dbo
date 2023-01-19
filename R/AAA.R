@@ -13,8 +13,6 @@ NULL
 
 
    
-
-
 #' \strong{d}ata \strong{b}ase interface for scidb.\strong{o}rn.mpg.de
 #'
 #' An interface to \href{http://scidb.mpio.orn.mpg.de}{scidb.mpio.orn.mpg.de} databases
