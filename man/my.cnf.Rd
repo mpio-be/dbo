@@ -14,3 +14,6 @@ my.cnf(delete = FALSE)
 manage database credentials
 manage database credentials for for different hosts .
 }
+\note{
+If you are also using my.cnf with cli tools that use -`-defaults-group-suffix=`, make sure that any `[name]` entry is duplicated as `[clientname]`.
+}

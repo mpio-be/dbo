@@ -2,11 +2,9 @@
 % Please edit documentation in R/AAA.R
 \docType{package}
 \name{dbo}
+\alias{dbo-package}
 \alias{dbo}
 \title{\strong{d}ata \strong{b}ase interface for scidb.\strong{o}rn.mpg.de}
 \description{
 An interface to \href{http://scidb.mpio.orn.mpg.de}{scidb.mpio.orn.mpg.de} databases
-}
-\author{
-Mihai Valcu \email{valcu@orn.mpg.de}
 }

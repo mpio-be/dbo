@@ -2,6 +2,8 @@
 #' manage database credentials
 #' manage database credentials for for different hosts .
 #' @param delete   removes the config file (default to FALSE).
+#' @note 
+#' If you are also using my.cnf with cli tools that use -`-defaults-group-suffix=`, make sure that any `[name]` entry is duplicated as `[clientname]`. 
 #' @export 
 #' 
 my.cnf <- function(delete = FALSE) {

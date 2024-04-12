@@ -18,8 +18,9 @@ NULL
 #' An interface to \href{http://scidb.mpio.orn.mpg.de}{scidb.mpio.orn.mpg.de} databases
 #'
 #'
-#' @name dbo
 #' @docType package
+#' @name dbo
+"_PACKAGE"
 #'
 #' @author Mihai Valcu \email{valcu@@orn.mpg.de}
 #'
